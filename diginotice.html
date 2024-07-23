@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="diginotice.css">
     <title>Digital Notice Board</title>
 </head>
 
 <body>
+    <script src="widget.js"></script>
     <div class="icons">
-        <a href="Pomodoro/pomodoro.html" target="_blank"><img src="images/tomato.png" class="icon"></a>
-        <img src="images/google-forms.png" class="icon">
+        <a href="#" id="timerlink"><img src="images/tomato.png" class="icon"></a>
+        <a href="#" id="formlink"><img src="images/google-forms.png" class="icon"></a>
         <img src="images/excel.png" class="icon">
         <img src="images/smartwatch.png" class="icon">
         <img src="images/book.png" class="icon">
@@ -26,9 +27,12 @@
         frameborder="0" width="900" height="400" allowfullscreen="true" mozallowfullscreen="true"
         webkitallowfullscreen="true">
     </iframe>
+    <iframe id="timer" src="Pomodoro/pomodoro.html" frameborder="0" width="900" height="400" allowfullscreen="true"
+        mozallowfullscreen="true" webkitallowfullscreen="true">
+    </iframe>
     <iframe id="form"
         src="https://docs.google.com/forms/d/e/1FAIpQLSdczpcQSlwJkxh4PM99jzpwEEl8OGrhjyumdqUw2zZqN_D4fQ/viewform?embedded=true"
-        width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">
+        width="900" height="400" frameborder="0" marginheight="0" marginwidth="0">
     </iframe>
 </body>
 

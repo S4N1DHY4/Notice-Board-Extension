@@ -21,3 +21,11 @@ body {
     margin: 10px 0;
     padding-left: 10px;
 }
+
+iframe {
+    display: none;
+}
+
+#notice {
+    display: block;
+}
