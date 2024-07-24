@@ -1,42 +1,66 @@
 const startEl = document.getElementById("start");
-const stopEl = document.getElementById("stop");
-const resetEl = document.getElementById("reset");
-const timerEl = document.getElementById("timer");
-
-let interval;
-let timeLeft = 1500;
-
-function updateTimer() {
-  let minutes = Math.floor(timeLeft / 60);
-  let seconds = timeLeft % 60;
-  let formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds
-    .toString()
-    .padStart(2, "0")}`;
-
-  timerEl.innerHTML = formattedTime;
-}
-
-function startTimer() {
-  interval = setInterval(() => {
-    timeLeft--;
-    updateTimer();
-    if (timeLeft === 0) {
-      clearInterval(interval);
-      alert("Time's up!");
-      timeLeft = 1500;
-      updateTimer();
+function updateTime() {
+  chrome.storage.local.get(["timer", "timeOption","isRunning","isFinished"], (res) => {
+    const time = document.getElementById("timer");
+    const minutes = `${res.timeOption - Math.ceil(res.timer / 60)}`.padStart(
+      2,
+      "0"
+    );
+    let seconds = "00";
+    if (res.timer % 60 != 0) {
+      seconds = `${60 - (res.timer % 60)}`.padStart(2, "0");
     }
-  }, 1000);
-}
-function stopTimer() {
-  clearInterval(interval);
-}
-function resetTimer() {
-  clearInterval(interval);
-  timeLeft = 1500;
-  updateTimer();
+    time.textContent = `${minutes}:${seconds}`;
+    if (res.timer == 0 && res.isFinished == true) {
+      alert("Pomodoro Timer: Time's Up!");
+      chrome.storage.local.set(
+        {
+          timer: 0,
+          isRunning: false,
+          isFinished: false
+        },
+        () => {
+          startEl.textContent = "Start";
+        }
+      );
+    }
+    if (res.timer == 0 && res.isRunning){
+      chrome.storage.local.set(
+        {
+          isFinished: true
+        }
+      );
+    }
+  });
 }
 
-startEl.addEventListener("click", startTimer);
-stopEl.addEventListener("click", stopTimer);
-resetEl.addEventListener("click", resetTimer);
+updateTime();
+setInterval(updateTime, 1000);
+
+startEl.addEventListener("click", () => {
+  chrome.storage.local.get(["isRunning"], (res) => {
+    chrome.storage.local.set(
+      {
+        isRunning: !res.isRunning,
+      },
+      () => {
+        startEl.textContent = !res.isRunning
+          ? "Pause"
+          : "Start";
+      }
+    );
+  });
+});
+
+const resetEl = document.getElementById("reset");
+resetEl.addEventListener("click", () => {
+  chrome.storage.local.set(
+    {
+      timer: 0,
+      isRunning: false,
+    },
+    () => {
+      startEl.textContent = "Start";
+    }
+  );
+});

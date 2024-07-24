@@ -8,5 +8,14 @@
     },
     "icons": {
         "128": "logo.png"
-    }
+    },
+    "permissions": [
+        "storage",
+        "alarms",
+        "notifications"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "options_page": "options.html"
 }

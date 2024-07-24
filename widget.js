@@ -26,4 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return false;
     });
 
+    var homelink = document.getElementById('homelink');
+    homelink.addEventListener('click', function() {
+        showWidget('notice',widgetids);
+        return false;
+    });
+
 });
