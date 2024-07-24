@@ -4,28 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenAI Embedding Example</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        input, button {
-            padding: 10px;
-            margin: 5px;
-        }
-        #output {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>OpenAI Embedding Example</h1>
-    <input type="text" id="input" placeholder="Enter text to embed">
-    <button id="send">Get Embedding</button>
-    <div id="output"></div>
-
+    <div class="container">
+        <h1>OpenAI Chat</h1>
+        <input type="text" id="input" placeholder="Start chat">
+        <button id="send">Go</button>
+        <div id="output">Your Answer</div>
+    </div>
     <script src="popup.js"></script>
 </body>
 </html>

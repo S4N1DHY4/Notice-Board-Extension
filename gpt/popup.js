@@ -3,7 +3,7 @@ document.getElementById('send').addEventListener('click', async () => {
     const outputDiv = document.getElementById('output');
     outputDiv.innerHTML = 'Loading...';
 
-    const apiKey = 'sk-proj-44Lq6KO8CCwILhCr0nHRT3BlbkFJiayHNws92RNbcRVoj8Qn'; // Replace with your actual OpenAI API key
+    const apiKey = 'your api key'; // Replace with your actual OpenAI API key
 
     if (!apiKey || apiKey.startsWith('sk-None')) {
         outputDiv.innerHTML = '<pre>Error: Invalid API key. Please replace "YOUR_OPENAI_API_KEY" with a valid OpenAI API key.</pre>';
