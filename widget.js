@@ -1,4 +1,4 @@
-var widgetids=["notice","timer","form","excel","calendar","music"] //add widget id after adding new widget
+var widgetids=["notice","timer","form","excel","calendar","music","quote"] //add widget id after adding new widget
 
 function showWidget(showid, ids) {
     for (var i=0; i<ids.length; i++) {
@@ -41,6 +41,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var musiclink = document.getElementById('musiclink');
     musiclink.addEventListener('click', function() {
         showWidget('music',widgetids);
+        return false;
+    });
+
+    var musiclink = document.getElementById('quotelink');
+    musiclink.addEventListener('click', function() {
+        showWidget('quote',widgetids);
         return false;
     });
 
